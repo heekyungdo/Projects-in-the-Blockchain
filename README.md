@@ -2,7 +2,7 @@
 4 projects of blockchain business model class 
 
 
-4 different projects in the class.
+        4 different projects in the class.
         1. 나만의 이더스캔 만들기
         2. Dapp 만들기
         3. 개인 프로젝트

@@ -21,7 +21,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
   </head>
   <body>
-    <h2>Ether Scan</h2>
+    <h2>Ether Scan ♥</h2>
     <div>
       <input
         type="text"
@@ -178,7 +178,6 @@
         // 그 값이 숫자인지 아니면 0x 16진수 인지 구분한다.
         if (inputValue.slice(0, 2) == "0x" && inputValue.length == 42) {
           console.log("This is an Address.");
-          web3.eth.getBalance(inputValue);
           let getBal = web3.eth.getBalance(inputValue);
           document.getElementById("dataTable1").innerHTML =
             "Account" +
@@ -189,19 +188,42 @@
             "Balance" +
             ": " +
             getBal;
-          // let balanceTable = "";
-          // balanceTable =
-          //   "<tr><td>" + inputValue + "</td> <td>" + getBal + "</td></tr>";
-          // function searchInfor() {
-          //   document.getElementById("dataTable1").innerHTML = balanceTable;
-          // }
         } else if (inputValue.slice(0, 2) == "0x" && inputValue.length == 66) {
           console.log("This is a TX.");
-          web3.eth.getTransaction(inputValue);
-          document.get;
+          web3.eth.getTransaction(inputValue, function (error, tx) {
+            console.log(tx);
+            document.getElementById("dataTable1").innerHTML =
+              tx.hash +
+              "<p>" +
+              tx.nonce +
+              "<p>" +
+              tx.blockNumber +
+              "<p>" +
+              tx.gas +
+              "<p>" +
+              tx.gasPrice;
+          });
         } else {
           console.log("This is a Block.");
-          web3.eth.get;
+          web3.eth.getBlock(inputValue, function (error, number) {
+            console.log(number);
+            document.getElementById("dataTable1").innerHTML =
+              number.number +
+              "<p>" +
+              number.difficulty +
+              "<p>" +
+              number.gasLimit +
+              "<p>" +
+              number.gasUsed +
+              "<p>" +
+              number.hash +
+              "<p>" +
+              number.parentHash +
+              "<p>" +
+              number.timestamp +
+              "<p>" +
+              number.transactions;
+          });
         }
       }
 
@@ -213,15 +235,6 @@
           document.getElementById("tableCss").style.display = "";
         }
       }
-
-      // let getBal = web3.eth.getBalance(inputValue);
-      // let balanceTable = "";
-      // balanceTable =
-      //   "<tr><td>" + inputValue + "</td> <td>" + getBal + "</td></tr>";
-
-      // function searchInfo() {
-      //   document.getElementById("dataTable1").innerHTML = "balanceTable";
-      // }
 
       update();
     </script>

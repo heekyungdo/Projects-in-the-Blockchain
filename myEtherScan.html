@@ -21,7 +21,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
   </head>
   <body>
-    <h2>Ether Scan ♥</h2>
+    <h2>😊 Ether Scan</h2>
     <div>
       <input
         type="text"
@@ -193,14 +193,20 @@
           web3.eth.getTransaction(inputValue, function (error, tx) {
             console.log(tx);
             document.getElementById("dataTable1").innerHTML =
+              "<p>" +
+              "hash: " +
               tx.hash +
               "<p>" +
+              "nonce: " +
               tx.nonce +
               "<p>" +
+              "blockNumber: " +
               tx.blockNumber +
               "<p>" +
+              "gas: " +
               tx.gas +
               "<p>" +
+              "gasPrice: " +
               tx.gasPrice;
           });
         } else {
@@ -208,20 +214,29 @@
           web3.eth.getBlock(inputValue, function (error, number) {
             console.log(number);
             document.getElementById("dataTable1").innerHTML =
+              "<p>" +
+              "number: " +
               number.number +
               "<p>" +
+              "difficulty: " +
               number.difficulty +
               "<p>" +
+              "gasLimit: " +
               number.gasLimit +
               "<p>" +
+              "gasUsed: " +
               number.gasUsed +
               "<p>" +
+              "hash: " +
               number.hash +
               "<p>" +
+              "parentHash: " +
               number.parentHash +
               "<p>" +
+              "timestamp: " +
               number.timestamp +
               "<p>" +
+              "transactions: " +
               number.transactions;
           });
         }

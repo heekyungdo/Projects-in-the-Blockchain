@@ -21,6 +21,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
   </head>
   <body>
+    <h2>Ether Scan</h2>
     <div>
       <input
         type="text"
@@ -50,6 +51,19 @@
       </thead>
       <tbody id="dataTable"></tbody>
     </table>
+
+    <!-- <table id="balanceT" class="table table-striped" style="display: none">
+      <thead>
+        <tr>
+          <th>Account</th>
+          <th>Balance</th>
+        </tr>
+      </thead>
+      <tbody id="dataTable1"></tbody>
+    </table> -->
+
+    <div id="dataTable1"></div>
+
     <div id="sendEther">
       from : <input type="text" id="from" placeholder="보내는 사람" /> to :
       <input type="text" id="to" placeholder="받는 사람" /> value :
@@ -129,7 +143,7 @@
         update();
       }
 
-      let contractAddress = "0xda668CE611346417260a6557ec2a08f9ABf7775e";
+      let contractAddress = "0xa397e79585F2Acf863e1cA56BEbB155172F57699";
 
       let abi = [
         {
@@ -160,11 +174,34 @@
         // 지금 인풋에 있는 값을 콘솔에 찍는다
         let inputValue = document.getElementById("searchAll").value;
         console.log(typeof inputValue);
+        // console.log(inputValue.length);
         // 그 값이 숫자인지 아니면 0x 16진수 인지 구분한다.
-        if (inputValue.slice(0, 2) == "0x") {
+        if (inputValue.slice(0, 2) == "0x" && inputValue.length == 42) {
           console.log("This is an Address.");
+          web3.eth.getBalance(inputValue);
+          let getBal = web3.eth.getBalance(inputValue);
+          document.getElementById("dataTable1").innerHTML =
+            "Account" +
+            ": " +
+            inputValue +
+            "        " +
+            " / " +
+            "Balance" +
+            ": " +
+            getBal;
+          // let balanceTable = "";
+          // balanceTable =
+          //   "<tr><td>" + inputValue + "</td> <td>" + getBal + "</td></tr>";
+          // function searchInfor() {
+          //   document.getElementById("dataTable1").innerHTML = balanceTable;
+          // }
+        } else if (inputValue.slice(0, 2) == "0x" && inputValue.length == 66) {
+          console.log("This is a TX.");
+          web3.eth.getTransaction(inputValue);
+          document.get;
         } else {
           console.log("This is a Block.");
+          web3.eth.get;
         }
       }
 
@@ -176,6 +213,15 @@
           document.getElementById("tableCss").style.display = "";
         }
       }
+
+      // let getBal = web3.eth.getBalance(inputValue);
+      // let balanceTable = "";
+      // balanceTable =
+      //   "<tr><td>" + inputValue + "</td> <td>" + getBal + "</td></tr>";
+
+      // function searchInfo() {
+      //   document.getElementById("dataTable1").innerHTML = "balanceTable";
+      // }
 
       update();
     </script>

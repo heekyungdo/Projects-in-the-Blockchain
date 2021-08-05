@@ -18,26 +18,31 @@
       rel="stylesheet"
       href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css"
     />
+
+    <link rel="stylesheet" href="style.css" />
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
   </head>
   <body>
-    <h2>😊 Ether Scan</h2>
-    <div>
-      <input
-        type="text"
-        id="searchAll"
-        placeholder="Search by Address / Block / Txn Hash"
-      />
-      <button
-        type="button"
-        id="searchInfo"
-        onclick="ethSearch()"
-        class="btn btn-outline-info"
-      >
-        Search
-      </button>
+    <div class="topCss">
+      <h2>😊 Ether Scan</h2>
+      <h4 class="explain">The Ethereum Blockchain Explorer</h4>
+      <div class="search_div">
+        <input
+          type="text"
+          id="searchAll"
+          placeholder="Search by Address / Block / Txn Hash"
+        />
+        <button
+          type="button"
+          id="searchInfo"
+          onclick="ethSearch()"
+          class="btn btn-outline-info"
+        >
+          Search
+        </button>
+      </div>
     </div>
-    <div>
+    <div class="viewAccounts">
       <button type="button" id="accountsTable" onclick="viewAccounts()">
         View Accounts
       </button>

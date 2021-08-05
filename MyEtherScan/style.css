@@ -1,0 +1,18 @@
+.topCss {
+  background-color: lightpink;
+  height: 200px;
+  text-align: center;
+  padding: 10px;
+}
+
+.explain {
+  padding-top: 35px;
+}
+.search_div {
+  padding: 3px;
+}
+
+.viewAccounts {
+  margin: 15px;
+  text-align: right;
+}

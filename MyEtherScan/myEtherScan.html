@@ -57,7 +57,7 @@
       <tbody id="dataTable"></tbody>
     </table>
 
-    <!-- <table id="balanceT" class="table table-striped" style="display: none">
+    <table id="addressTable" class="table table-striped" style="display: none">
       <thead>
         <tr>
           <th>Account</th>
@@ -65,9 +65,31 @@
         </tr>
       </thead>
       <tbody id="dataTable1"></tbody>
-    </table> -->
+    </table>
 
-    <div id="dataTable1"></div>
+    <table id="txTable" class="table table-striped" style="display: none">
+      <thead>
+        <tr>
+          <th>blockHash</th>
+          <th>blockNumber</th>
+          <th>gas</th>
+          <th>gasPrice</th>
+        </tr>
+      </thead>
+      <tbody id="dataTable2"></tbody>
+    </table>
+
+    <table id="blockTable" class="table table-striped" style="display: none">
+      <thead>
+        <tr>
+          <th>number</th>
+          <th>gasLimit</th>
+          <th>gasUsed</th>
+          <th>parentHash</th>
+        </tr>
+      </thead>
+      <tbody id="dataTable3"></tbody>
+    </table>
 
     <div id="sendEther">
       from : <input type="text" id="from" placeholder="보내는 사람" /> to :
@@ -183,66 +205,55 @@
         // 그 값이 숫자인지 아니면 0x 16진수 인지 구분한다.
         if (inputValue.slice(0, 2) == "0x" && inputValue.length == 42) {
           console.log("This is an Address.");
+          document.getElementById("txTable").style.display = "none";
+          document.getElementById("blockTable").style.display = "none";
+
           let getBal = web3.eth.getBalance(inputValue);
-          document.getElementById("dataTable1").innerHTML =
-            "Account" +
-            ": " +
-            inputValue +
-            "        " +
-            " / " +
-            "Balance" +
-            ": " +
-            getBal;
+          let accountList =
+            "<tr><td>" + inputValue + "</td><td>" + getBal + "</td></tr>";
+
+          document.getElementById("addressTable").style.display = "";
+          document.getElementById("dataTable1").innerHTML = accountList;
         } else if (inputValue.slice(0, 2) == "0x" && inputValue.length == 66) {
           console.log("This is a TX.");
           web3.eth.getTransaction(inputValue, function (error, tx) {
-            console.log(tx);
-            document.getElementById("dataTable1").innerHTML =
-              "<p>" +
-              "hash: " +
-              tx.hash +
-              "<p>" +
-              "nonce: " +
-              tx.nonce +
-              "<p>" +
-              "blockNumber: " +
+            // console.log(tx);
+            // console.log(tx.blockHash);
+            document.getElementById("addressTable").style.display = "none";
+            document.getElementById("blockTable").style.display = "none";
+            let txList =
+              "<tr><td>" +
+              tx.blockHash +
+              "</td><td>" +
               tx.blockNumber +
-              "<p>" +
-              "gas: " +
+              "</td><td>" +
               tx.gas +
-              "<p>" +
-              "gasPrice: " +
-              tx.gasPrice;
+              "</td><td>" +
+              tx.gasPrice +
+              "</td></tr>";
+
+            document.getElementById("txTable").style.display = "";
+
+            document.getElementById("dataTable2").innerHTML = txList;
           });
         } else {
           console.log("This is a Block.");
           web3.eth.getBlock(inputValue, function (error, number) {
             console.log(number);
-            document.getElementById("dataTable1").innerHTML =
-              "<p>" +
-              "number: " +
+            document.getElementById("addressTable").style.display = "none";
+            document.getElementById("txTable").style.display = "none";
+            let blockList =
+              "<tr><td>" +
               number.number +
-              "<p>" +
-              "difficulty: " +
-              number.difficulty +
-              "<p>" +
-              "gasLimit: " +
+              "</td><td>" +
               number.gasLimit +
-              "<p>" +
-              "gasUsed: " +
+              "</td><td>" +
               number.gasUsed +
-              "<p>" +
-              "hash: " +
-              number.hash +
-              "<p>" +
-              "parentHash: " +
+              "</td><td>" +
               number.parentHash +
-              "<p>" +
-              "timestamp: " +
-              number.timestamp +
-              "<p>" +
-              "transactions: " +
-              number.transactions;
+              "</td></tr>";
+            document.getElementById("blockTable").style.display = "";
+            document.getElementById("dataTable3").innerHTML = blockList;
           });
         }
       }

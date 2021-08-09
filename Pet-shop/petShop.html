@@ -15,7 +15,7 @@
  
 </body>
 
-<script type="text/javascript">
+<script>
 	let dogInfo = [
       {
         id: 0,
@@ -270,13 +270,9 @@
     document.getElementById("contract").innerText = contract._address
     // console.log(contract);
   
-    function getAdopters() {
-      contract.methods.getAdopters().call()
-      .then(function(result){
-        document.getElementById("get").innerText=result
-      });
-    }
+
    
+  
 
 </script>
 </html>

@@ -19,7 +19,7 @@ h4 {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   transition: 0.3s;
   border-radius: 5px;
-  margin: 20px;
+  margin: 35px;
 }
 
 .card:hover {
@@ -45,6 +45,19 @@ img {
 .connectBtn {
   position: absolute;
   top: 70px;
-  left: 225px;
-  margin: 18px;
+  left: 175px;
+  margin: 30px;
+}
+
+.adopted {
+  position: absolute;
+  top: 68px;
+  right: 140px;
+  margin: 30px;
+}
+
+#adopted {
+  height: 20px;
+  width: 100px;
+  border-radius: 5px;
 }

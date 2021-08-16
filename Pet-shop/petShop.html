@@ -11,7 +11,7 @@
     <h1 class="title">Pet Shop</h1>
   </header>
   <main id="dog"></main>
-  <button type="button" class="connectBtn" onclick="connect()">Connect Wallet</button>
+  <button type="button" class="connectBtn" onclick="connect()">Wallet</button>
    <div class="adopted">Adopted <input type="text" id="adopted" /></div>
 </body>
 
@@ -24,6 +24,7 @@
         age: 5,
         breed: "Border Collie",
         location: "New York",
+        price: "12ETH"
       },
 
       {
@@ -33,6 +34,7 @@
         age: 8,
         breed: "Boston Terrier",
         location: "Chicago",
+        price: "14ETH"
       },
 
       {
@@ -42,6 +44,7 @@
         age: 4,
         breed: "Chihuahua",
         location: "Minnesota",
+        price: "8ETH"
       },
       {
         id: 3,
@@ -50,6 +53,7 @@
         age: 2,
         breed: "Chow-Chow",
         location: "Kentucky",
+        price: "13ETH"
       },
       {
         id: 4,
@@ -58,6 +62,7 @@
         age: 7,
         breed: "Dachshund",
         location: "Seoul",
+        price: "11ETH"
       },
       {
         id: 5,
@@ -66,6 +71,7 @@
         age: 3,
         breed: "French bulldog",
         location: "Pennsylvania",
+        price: "10ETH"
       },
       {
         id: 6,
@@ -74,6 +80,7 @@
         age: 7,
         breed: "German Shepherd",
         location: "Michigan",
+        price: "16ETH"
       },
       {
         id: 7,
@@ -82,6 +89,7 @@
         age: 5,
         breed: "Golden Retriever",
         location: "Los Angeles",
+        price: "12ETH"
       },
       {
         id: 8,
@@ -90,6 +98,7 @@
         age: 4,
         breed: "Greyhound",
         location: "Tokyo",
+        price: "15ETH"
       },
       {
         id: 9,
@@ -98,6 +107,7 @@
         age: 4,
         breed: "Pomeranian",
         location: "Busan",
+        price: "13ETH"
       },
       {
         id: 10,
@@ -106,6 +116,7 @@
         age: 6,
         breed: "Poodle",
         location: "Gangwon",
+        price: "16ETH"
       },
       {
         id: 11,
@@ -114,6 +125,7 @@
         age: 9,
         breed: "Saint Bernard",
         location: "Hefei",
+        price: "11ETH"
       },
       {
         id: 12,
@@ -122,6 +134,7 @@
         age: 3,
         breed: "Samoyed",
         location: "Paris",
+        price: "13ETH"
       },
       {
         id: 13,
@@ -130,6 +143,7 @@
         age: 6,
         breed: "Shiba",
         location: "Hawaii",
+        price: "11ETH"
       },
       {
         id: 14,
@@ -138,6 +152,7 @@
         age: 5,
         breed: "Siberian Husky",
         location: "West Virginia",
+        price: "18ETH"
       },
       {
         id: 15,
@@ -146,6 +161,7 @@
         age: 5,
         breed: "Yorkshire Terrier",
         location: "Santiego",
+        price: "10ETH"
       },
     ];
 
@@ -156,16 +172,17 @@
       ageInfo = dogInfo[i].age;
       breedInfo = dogInfo[i].breed;
       locationInfo = dogInfo[i].location;
+      priceInfo = dogInfo[i].price;
 
       list +=
-        ' <div class="card">' +
+        "<div class='card'>"+
         "<img src=" +
         photoInfo +
         " />" +
-        '<div class="container">' +
+        "<div class='container'>" +
         "<h4>" +
-        nameInfo +
-        "</h4>" +
+        nameInfo + "</h4>" +"<h5 id='connectPrice' class='money'>"+priceInfo+"</h5>"+
+
         "<h6>" +
         "Age: " +
         ageInfo +

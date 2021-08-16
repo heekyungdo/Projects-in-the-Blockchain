@@ -12,7 +12,14 @@
   padding: 3px;
 }
 
-.viewAccount {
+#viewAccounts {
   margin: 15px;
   text-align: right;
+}
+
+#searchAll {
+  width: 243px;
+  height: 25px;
+  border: 2px solid grey;
+  border-radius: 3px;
 }

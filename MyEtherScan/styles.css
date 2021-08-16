@@ -1,0 +1,42 @@
+body {
+  margin: 0px;
+}
+
+.back-color {
+  background-color: pink;
+  height: 250px;
+}
+
+h1 {
+  text-align: center;
+  padding: 20px;
+  margin: 0;
+}
+
+h3 {
+  margin-top: 60px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.searchTop {
+  text-align: center;
+}
+
+#searchInput {
+  width: 226px;
+  height: 25px;
+  border: 2px solid grey;
+  border-radius: 3px;
+}
+
+#searchBtn {
+  width: auto;
+  height: 30px;
+  border: 3px solid grey;
+  border-radius: 5px;
+  background-color: white;
+  /* border-color: skyblue; */
+  color: grey;
+  font-weight: thick;
+}

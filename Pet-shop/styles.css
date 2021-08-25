@@ -80,3 +80,11 @@ img {
   text-align: right;
   box-shadow: inset 0 -10px 0 #d9fcdb;
 }
+
+.getContract {
+  position: absolute;
+  top: 70px;
+  right: 200px;
+  /* margin: 20px;
+  padding: 3px 6px 3px 6px; */
+}

@@ -7,10 +7,14 @@
 
 .explain {
   padding-top: 35px;
+  font-family: 'Carter One', cursive;
 }
 .search_div {
   padding: 3px;
 }
+
+h4~button {
+  height:50px;
 
 #viewAccounts {
   margin: 15px;
@@ -18,8 +22,12 @@
 }
 
 #searchAll {
-  width: 243px;
+  width: 245px;
   height: 25px;
   border: 2px solid grey;
   border-radius: 3px;
+}
+
+h2 {
+  font-family: 'Carter One', cursive;
 }

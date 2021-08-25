@@ -8,11 +8,13 @@
 <body>
   <div id="account"></div>
 	<header>
-    <h1 class="title">Pet Shop</h1>
+    <h1 class="title">
+       Pet Shop 🐾</h1>
   </header>
   <main id="dog"></main>
   <button type="button" class="connectBtn" onclick="connect()">Wallet</button>
-   <div class="adopted">Adopted <input type="text" id="adopted" /></div>
+  <button class="getContract" onclick="getContract()">Get Contract</button>
+  <div id="contract"></div>
 </body>
 
 <script>
@@ -24,7 +26,7 @@
         age: 5,
         breed: "Border Collie",
         location: "New York",
-        price: "12ETH"
+        price: "3ETH"
       },
 
       {
@@ -34,7 +36,7 @@
         age: 8,
         breed: "Boston Terrier",
         location: "Chicago",
-        price: "14ETH"
+        price: "2ETH"
       },
 
       {
@@ -44,7 +46,7 @@
         age: 4,
         breed: "Chihuahua",
         location: "Minnesota",
-        price: "8ETH"
+        price: "1ETH"
       },
       {
         id: 3,
@@ -53,7 +55,7 @@
         age: 2,
         breed: "Chow-Chow",
         location: "Kentucky",
-        price: "13ETH"
+        price: "3ETH"
       },
       {
         id: 4,
@@ -62,7 +64,7 @@
         age: 7,
         breed: "Dachshund",
         location: "Seoul",
-        price: "11ETH"
+        price: "2ETH"
       },
       {
         id: 5,
@@ -71,7 +73,7 @@
         age: 3,
         breed: "French bulldog",
         location: "Pennsylvania",
-        price: "10ETH"
+        price: "1ETH"
       },
       {
         id: 6,
@@ -80,7 +82,7 @@
         age: 7,
         breed: "German Shepherd",
         location: "Michigan",
-        price: "16ETH"
+        price: "2ETH"
       },
       {
         id: 7,
@@ -89,7 +91,7 @@
         age: 5,
         breed: "Golden Retriever",
         location: "Los Angeles",
-        price: "12ETH"
+        price: "3ETH"
       },
       {
         id: 8,
@@ -98,7 +100,7 @@
         age: 4,
         breed: "Greyhound",
         location: "Tokyo",
-        price: "15ETH"
+        price: "2ETH"
       },
       {
         id: 9,
@@ -107,7 +109,7 @@
         age: 4,
         breed: "Pomeranian",
         location: "Busan",
-        price: "13ETH"
+        price: "3ETH"
       },
       {
         id: 10,
@@ -116,7 +118,7 @@
         age: 6,
         breed: "Poodle",
         location: "Gangwon",
-        price: "16ETH"
+        price: "1ETH"
       },
       {
         id: 11,
@@ -125,7 +127,7 @@
         age: 9,
         breed: "Saint Bernard",
         location: "Hefei",
-        price: "11ETH"
+        price: "1ETH"
       },
       {
         id: 12,
@@ -134,7 +136,7 @@
         age: 3,
         breed: "Samoyed",
         location: "Paris",
-        price: "13ETH"
+        price: "3ETH"
       },
       {
         id: 13,
@@ -143,7 +145,7 @@
         age: 6,
         breed: "Shiba",
         location: "Hawaii",
-        price: "11ETH"
+        price: "1ETH"
       },
       {
         id: 14,
@@ -152,7 +154,7 @@
         age: 5,
         breed: "Siberian Husky",
         location: "West Virginia",
-        price: "18ETH"
+        price: "4ETH"
       },
       {
         id: 15,
@@ -161,11 +163,11 @@
         age: 5,
         breed: "Yorkshire Terrier",
         location: "Santiego",
-        price: "10ETH"
+        price: "2ETH"
       },
     ];
 
-    let list;
+    let list = ""
     for (let i = 0; i < dogInfo.length; i++) {
       nameInfo = dogInfo[i].name;
       photoInfo = dogInfo[i].picture;
@@ -193,9 +195,10 @@
         "Location: " +
         locationInfo +
         "</h6>" +
-        '<button class="btn" id="get" onclick="getAdopters()">' +
+        '<button class="btn" id="'+i+'" onclick="getAdopters('+i+')" style="display:inline">' +
         "Adopt" +
         "</button>" +
+        "<div id = 'showText"+i+"'></div>" +
         " </div>" +
         " </div>";
     }
@@ -222,15 +225,28 @@
       } catch (error) {
       }
     }
-    // Legacy dapp browsers...
-    else if (window.web3) {
-      // Use Mist/MetaMask's provider.
-      web3 = window.web3;
-      console.log("Injected web3 detected.");
-    }
+  // Legacy dapp browsers...
+  else if (window.web3) {
+    // Use Mist/MetaMask's provider.
+    web3 = window.web3;
+    console.log("Injected web3 detected.");
   }
-
-  let abi = [
+}
+function getContract() {
+let abi = [
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_id",
+				"type": "uint256"
+			}
+		],
+		"name": "adopt",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
 	{
 		"inputs": [
 			{
@@ -254,37 +270,59 @@
 		"inputs": [
 			{
 				"internalType": "uint256",
-				"name": "_petId",
+				"name": "_id",
 				"type": "uint256"
 			}
 		],
-		"name": "doAdopt",
+		"name": "getOwner",
 		"outputs": [
 			{
-				"internalType": "uint256",
+				"internalType": "address",
 				"name": "",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "getAdopters",
-		"outputs": [
-			{
-				"internalType": "address[15]",
-				"name": "",
-				"type": "address[15]"
+				"type": "address"
 			}
 		],
 		"stateMutability": "view",
 		"type": "function"
 	}
 ]
-    contract = new web3.eth.Contract(abi, "0xda67752eC362Aa1b29906dF533b4570c84D60f44")
-    document.getElementById("contract").innerText = contract._address
+
+contract = new web3.eth.Contract(abi, "0x09C522617d81E3989A7DCC3562173996dCD80260")
+document.getElementById("contract").innerHTML = contract._address
+console.log(contract)
+getOwner(0)
+}
+
+
+  
+function getAdopters(id) {
+  console.log(id);
+  contract.methods.adopt(id).send(
+    {from:account}
+  )
+  .then(function(receipt) {
+    console.log(receipt);
+    // getAdopters 함수 안에 getOwner 함수 써주는 이유는 입양된 강아지 버튼 바로  바꿔주기 위해서
+    getOwner(id)
+  });
+}
+
+function getOwner(id) {
+  // for (i=0; i<dogInfo.length; i++) {
+  contract.methods.getOwner(id).call()
+.then(function(result){
+  console.log(result);
+  
+ 
+  document.getElementById(id).style.display = "none";
+
+  const btnElement = document.getElementById("showText");
+  btnElement.innerText = "Already adopted";
+
+})
+}
+      
+    
     // console.log(contract);
   
 

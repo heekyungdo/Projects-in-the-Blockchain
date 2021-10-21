@@ -152,9 +152,16 @@ let dogInfo = [
 ];
 
 let h = [];
-h.push(`<div class='card'>`);
+// for (let dog of dogInfo)
+for (const [i, v] of [dogInfo].entries()) {
+  console.log(i, v);
+  console.log(i, i.id);
+}
+for (const [index, value] of [1, 2, 3, 4, 5].entries()) {
+  console.log(index, value);
+}
 for (let dog of dogInfo) {
-  h.push(`<img src=" 
+  h.push(`<div class='card'><img src=" 
     ${dog.picture}"/> 
     <div class='container'> 
     <h4> 
@@ -172,63 +179,14 @@ for (let dog of dogInfo) {
     </h6><h6> 
     Location:  
     ${dog.location} 
-    </h6>`);
+    </h6><button class="btn" onclick="getAdopters" style="display:inline">
+    Adopt 
+    </button> 
+    <div id = "showText
+    "></div></div></div>`);
 }
 
-h.push(`<button class="btn" onclick="getAdopters" style="display:inline">
-     Adopt 
-     </button> 
-     <div id = "showText
-     "></div></div></div>`);
-
 dogCard.innerHTML = h.join("");
-
-// let list = "";
-// for (let i = 0; i < dogInfo.length; i++) {
-//   nameInfo = dogInfo[i].name;
-//   photoInfo = dogInfo[i].picture;
-//   ageInfo = dogInfo[i].age;
-//   breedInfo = dogInfo[i].breed;
-//   locationInfo = dogInfo[i].location;
-//   priceInfo = dogInfo[i].price;
-
-//   list +=
-//     "<div class='card'>" +
-//     "<img src=" +
-//     photoInfo +
-//     " />" +
-//     "<div class='container'>" +
-//     "<h4>" +
-//     nameInfo +
-//     "</h4>" +
-//     "<h5 id='connectPrice' class='money'>" +
-//     priceInfo +
-//     "</h5>" +
-//     "<h6>" +
-//     "Age: " +
-//     ageInfo +
-//     "</h6><h6>" +
-//     "Breed: " +
-//     breedInfo +
-//     "</h6><h6>" +
-//     "Location: " +
-//     locationInfo +
-//     "</h6>" +
-//     '<button class="btn" id="' +
-//     i +
-//     '" onclick="getAdopters(' +
-//     i +
-//     ')" style="display:inline">' +
-//     "Adopt" +
-//     "</button>" +
-//     "<div id = 'showText" +
-//     i +
-//     "'></div>" +
-//     " </div>" +
-//     " </div>";
-// }
-
-// document.getElementById("dog").innerHTML = list;
 
 let provider;
 let web3;

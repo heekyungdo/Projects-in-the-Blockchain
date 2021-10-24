@@ -153,32 +153,31 @@ let dogInfo = [
 
 let h = [];
 // for (let dog of dogInfo)
-for (const [i, v] of [dogInfo].entries()) {
-  console.log(i, v);
-  console.log(i, i.id);
-}
-for (const [index, value] of [1, 2, 3, 4, 5].entries()) {
-  console.log(index, value);
-}
-for (let dog of dogInfo) {
+// for (const [i, v] of dogInfo.entries()) {
+//   console.log(i);
+// }
+// for (const [index, value] of [1, 2, 3, 4, 5].entries()) {
+//   console.log(index, value);
+// }
+for (const [i, v] of dogInfo.entries()) {
   h.push(`<div class='card'><img src=" 
-    ${dog.picture}"/> 
+    ${v.picture}"/> 
     <div class='container'> 
     <h4> 
-    ${dog.name} 
+    ${v.name} 
     </h4>
     <h5 id='connectPrice' class='money'> 
-    ${dog.price} 
+    ${v.price} 
     </h5> 
     <h6> 
     Age:  
-    ${dog.age} 
+    ${v.age} 
     </h6><h6> 
     Breed:  
-    ${dog.breed} 
+    ${v.breed} 
     </h6><h6> 
     Location:  
-    ${dog.location} 
+    ${v.location} 
     </h6><button class="btn" onclick="getAdopters" style="display:inline">
     Adopt 
     </button> 
@@ -215,61 +214,28 @@ async function connect() {
 function getContract() {
   let abi = [
     {
+      inputs: [],
+      stateMutability: "nonpayable",
+      type: "constructor",
+    },
+    {
       inputs: [
         {
-          internalType: "uint256",
-          name: "_id",
-          type: "uint256",
+          internalType: "address",
+          name: "_owner",
+          type: "address",
         },
       ],
-      name: "adopt",
+      name: "changeOwner",
       outputs: [],
       stateMutability: "nonpayable",
-      type: "function",
-    },
-    {
-      inputs: [
-        {
-          internalType: "uint256",
-          name: "",
-          type: "uint256",
-        },
-      ],
-      name: "adopters",
-      outputs: [
-        {
-          internalType: "address",
-          name: "",
-          type: "address",
-        },
-      ],
-      stateMutability: "view",
-      type: "function",
-    },
-    {
-      inputs: [
-        {
-          internalType: "uint256",
-          name: "_id",
-          type: "uint256",
-        },
-      ],
-      name: "getOwner",
-      outputs: [
-        {
-          internalType: "address",
-          name: "",
-          type: "address",
-        },
-      ],
-      stateMutability: "view",
       type: "function",
     },
   ];
 
   contract = new web3.eth.Contract(
     abi,
-    "0x09C522617d81E3989A7DCC3562173996dCD80260"
+    "0x739f8A073A7cc2f493Ccc9852D706Aca9A0B951f"
   );
   document.getElementById("contract").innerHTML = contract._address;
   console.log(contract);

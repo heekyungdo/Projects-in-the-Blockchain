@@ -151,7 +151,6 @@ let dogInfo = [
   },
 ];
 
-let h = [];
 // for (let dog of dogInfo)
 // for (const [i, v] of dogInfo.entries()) {
 //   console.log(i);
@@ -159,6 +158,7 @@ let h = [];
 // for (const [index, value] of [1, 2, 3, 4, 5].entries()) {
 //   console.log(index, value);
 // }
+let h = [];
 for (const [i, v] of dogInfo.entries()) {
   h.push(`<div class='card'><img src=" 
     ${v.picture}"/> 
@@ -186,6 +186,49 @@ for (const [i, v] of dogInfo.entries()) {
 }
 
 dogCard.innerHTML = h.join("");
+
+// let list = "";
+// for (let i = 0; i < pokemonInfo.length; i++) {
+//   nameInfo = pokemonInfo[i].name;
+//   photoInfo = pokemonInfo[i].picture;
+//   ageInfo = pokemonInfo[i].age;
+//   breedInfo = pokemonfo = pokemonInfo[i].location;
+//   priceInfo = pokemonInfo[i].price;
+
+//   list +=
+//     "<div class='card'>" +
+//     "<img src=" +
+//     photoInfo +
+//     " />" +
+//     "<div class='container'>" +
+//     "<h4>" +
+//     nameInfo +
+//     "</h4>" +
+//     "<h5 id='connectPrice' class='money'>" +
+//     priceInfo +
+//     "</h5>" +
+//     "<h6>" +
+//     "Age: " +
+//     ageInfo +
+//     "</h6><h6>" +
+//     "Breed: " +
+//     breedInfo +
+//     "</h6>" +
+//     '<button class="btn" id="' +
+//     i +
+//     '" onclick="getAdopters(' +
+//     i +
+//     ')" style="display:inline">' +
+//     "Adopt" +
+//     "</button>" +
+//     "<div id = 'showText" +
+//     i +
+//     "'></div>" +
+//     " </div>" +
+//     " </div>";
+// }
+
+// document.getElementById("pokemon").innerHTML = list;
 
 let provider;
 let web3;
@@ -249,7 +292,7 @@ function getAdopters(id) {
     .send({ from: account })
     .then(function (receipt) {
       console.log(receipt);
-      // getAdopters 함수 안에 getOwner 함수 써주는 이유는 입양된 강아지 버튼 바로  바꿔주기 위해서
+      // getAdopters 함수 안에 getOwner 함수 써주는 이유는 입양된 강아지 버튼 바로 바꿔주기 위해서
       getOwner(id);
     });
 }
